@@ -61,11 +61,35 @@ Used when quality and correctness matter more than speed. Agents in this tier ca
 | documentation-writer | deepseek-v4-flash | Follows templates, simple writing |
 | devops | qwen3.7-plus | Commands and configs, moderate reasoning |
 
-## Configuration
+## Native Setup (OpenClaude + OpenCode Go)
 
-### Native OpenClaude (default)
+### Prerequisites
 
-Configure your model in `~/.claude/settings.json`:
+- [OpenClaude](https://github.com/Gitlawb/openclaude) installed
+- [OpenCode Go](https://github.com/opencode-ai/opencode-go) installed and running as API provider
+
+### One-liner: .bashrc alias (recommended)
+
+Add this alias to your `~/.bashrc` or `~/.zshrc`:
+
+```bash
+alias openclaude='OPENAI_BASE_URL=https://opencode.ai/zen/go/v1 \
+  CLAUDE_CODE_USE_OPENAI=1 \
+  OPENCODE_API_KEY=sk-your-key-here \
+  OPENAI_MODEL=deepseek-v4-flash \
+  openclaude --dangerously-skip-permissions'
+```
+
+This does everything at once:
+- Connects to OpenCode Go natively (no proxy)
+- Sets `deepseek-v4-flash` as the default session model
+- Skips permission prompts automatically (`--dangerously-skip-permissions`)
+
+Each agent in `.claude/agents/*.md` still declares its own model, so agents use the right model tier regardless of the default.
+
+### Alternative: ~/.claude/settings.json
+
+If you prefer not to use an alias, configure `~/.claude/settings.json`:
 
 ```json
 {
@@ -76,13 +100,13 @@ Configure your model in `~/.claude/settings.json`:
 }
 ```
 
-Each agent's frontmatter declares its specific model. For example:
+And export the env vars in your shell profile:
 
-```yaml
----
-name: code-reviewer
-model: deepseek-v4-pro
----
+```bash
+export CLAUDE_CODE_USE_OPENAI=1
+export OPENAI_BASE_URL=https://opencode.ai/zen/go/v1
+export OPENCODE_API_KEY=sk-your-key-here
+export OPENAI_MODEL=deepseek-v4-flash
 ```
 
 ### Effort Level

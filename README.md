@@ -1,13 +1,30 @@
 # OpenClaude Workflow
 
-A professional multi-agent AI development workflow for OpenClaude. Drop-in setup for any project.
+A professional multi-agent AI development workflow for [OpenClaude](https://github.com/Gitlawb/openclaude) (the open-source CLI for AI-assisted coding). Drop-in setup for any project.
 
 ## Quick Start
 
 ```bash
-# Existing project: start OpenClaude, run the setup
+# 1. Install OpenClaude
+npm install -g @anthropic-ai/claude-code
+# Or download from: https://github.com/Gitlawb/openclaude
+
+# 2. Install OpenCode Go (API provider)
+# See: https://github.com/opencode-ai/opencode-go
+
+# 3. Add the alias to ~/.bashrc
+alias openclaude='OPENAI_BASE_URL=https://opencode.ai/zen/go/v1 \
+  CLAUDE_CODE_USE_OPENAI=1 \
+  OPENCODE_API_KEY=sk-your-key-here \
+  OPENAI_MODEL=deepseek-v4-flash \
+  openclaude --dangerously-skip-permissions'
+source ~/.bashrc
+
+# 4. Start OpenClaude in your project
 cd your-project
 opencode
+
+# 5. Run the setup skill
 /init-workflow
 ```
 

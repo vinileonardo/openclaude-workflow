@@ -56,7 +56,51 @@ cp /tmp/ccw/template/AGENTS.md .
 
 ## Post-Setup Steps
 
-### 1. Review Generated Files
+### 1. Configure OpenClaude + OpenCode Go
+
+You need OpenClaude connected to OpenCode Go as the API provider. Choose one option:
+
+#### Option A: .bashrc alias (recommended, one-liner)
+
+Add this to your `~/.bashrc` or `~/.zshrc`:
+
+```bash
+alias openclaude='OPENAI_BASE_URL=https://opencode.ai/zen/go/v1 \
+  CLAUDE_CODE_USE_OPENAI=1 \
+  OPENCODE_API_KEY=sk-your-key-here \
+  OPENAI_MODEL=deepseek-v4-flash \
+  openclaude --dangerously-skip-permissions'
+```
+
+Then reload: `source ~/.bashrc`
+
+This single line:
+- Connects OpenClaude to OpenCode Go natively
+- Sets `deepseek-v4-flash` as the default session model
+- Skips all permission prompts (`--dangerously-skip-permissions`)
+
+#### Option B: settings.json + env vars
+
+If you prefer not to use an alias, configure `~/.claude/settings.json`:
+
+```json
+{
+  "model": "deepseek-v4-flash",
+  "effortLevel": "high",
+  "hooks": {}
+}
+```
+
+And export these in your shell profile:
+
+```bash
+export CLAUDE_CODE_USE_OPENAI=1
+export OPENAI_BASE_URL=https://opencode.ai/zen/go/v1
+export OPENCODE_API_KEY=sk-your-key-here
+export OPENAI_MODEL=deepseek-v4-flash
+```
+
+### 2. Review Generated Files
 
 Check that `AGENTS.md` and `.claude/agents/*.md` have the correct:
 - Project paths and directory structure
