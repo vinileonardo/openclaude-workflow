@@ -38,6 +38,7 @@ openclaude-workflow/
 │   ├── SETUP.md                 # Guia de setup
 │   ├── SKILL_GUIDE.md           # Referência completa da skill
 │   ├── GITHUB_INTEGRATION.md    # Integração com GitHub
+│   ├── ROADMAP.md               # Visão de evolução futura
 │   ├── CUSTOMIZATION.md         # Guia de customização
 │   └── AGENT_TIERS.md           # Filosofia de modelos
 ├── CHANGELOG.md                 # Histórico de versões
@@ -107,6 +108,8 @@ Memórias persistentes entre sessões, tipadas em 4 categorias:
 /init-workflow --health        # Diagnóstico: verificar consistência do setup
 /init-workflow --prune         # Limpeza: remover arquivos órfãos e temporários
 /init-workflow --prune --dry-run  # Preview da limpeza sem deletar
+/init-workflow --github        # Configurar integração GitHub standalone
+/init-workflow --github --dry-run  # Preview da config GitHub
 ```
 
 Não há build, test, ou lint para este repositório — ele é puramente markdown template.

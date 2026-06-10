@@ -32,6 +32,9 @@ Usuário te deu a URL deste repo + o projeto dele?
 ├── Quer LIMPAR arquivos órfãos (agents antigos, temporários)?
 │   → Use `/init-workflow --prune` (preview primeiro)
 │
+├── Já tem o setup rodando e quer ADICIONAR integração com GitHub?
+│   → Use `/init-workflow --github` (standalone, não precisa re-setup)
+│
 └── Só quer entender o sistema?
     → Leia a [documentação completa](docs/SKILL_GUIDE.md)
 ```
