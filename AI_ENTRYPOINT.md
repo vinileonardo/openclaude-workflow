@@ -152,5 +152,6 @@ Leia, nesta ordem:
 7. **`template/docs/runbooks/`** — runbooks de uso diário (adicionar feature, corrigir bug, revisar segurança)
 8. **`template/docs/runbooks/first-task.md`** — tarefa de validação do workflow (hello world)
 9. **`docs/GITHUB_INTEGRATION.md`** — integração completa com GitHub (token, projects, milestones, actions)
-10. **`docs/CUSTOMIZATION.md`** — como adaptar para qualquer stack
-11. **`template/.claude/agents/*.md`** (pelo menos 2-3 agentes) — formato dos agentes
+10. **`docs/ROADMAP.md`** — visão de evolução futura do projeto
+11. **`docs/CUSTOMIZATION.md`** — como adaptar para qualquer stack
+12. **`template/.claude/agents/*.md`** (pelo menos 2-3 agentes) — formato dos agentes
