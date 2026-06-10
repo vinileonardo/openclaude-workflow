@@ -83,3 +83,7 @@ For full build:
 - Lazy load heavy components
 - Optimize images and assets
 - Use memo for pure components
+
+## References
+- `docs/agent-protocol.md` — artifact format (frontend-changes.md)
+- `docs/runbooks/adding-a-feature.md` — frontend dev in the pipeline

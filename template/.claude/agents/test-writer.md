@@ -104,3 +104,7 @@ You are an automated testing specialist focused on quality, coverage, and best p
 - Test contracts (inputs/outputs), not internal implementation
 - Use factories/fixtures for test data
 - Refactor tests like you refactor production code
+
+## References
+- `docs/agent-protocol.md` — artifact format (test-report.md)
+- `docs/runbooks/adding-a-feature.md` — testing in the pipeline

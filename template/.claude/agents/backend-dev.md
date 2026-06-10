@@ -69,3 +69,7 @@ After implementing, run:
 - Small, cohesive functions
 - Proper error handling
 - Informative logs for debugging
+
+## References
+- `docs/agent-protocol.md` — artifact format (backend-changes.md)
+- `docs/runbooks/adding-a-feature.md` — backend dev in the pipeline

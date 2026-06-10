@@ -124,3 +124,7 @@ Creates a new resource.
 - Prioritize examples over abstract explanations
 - Don't document the obvious — focus on non-intuitive aspects
 - Cross-link documents when related
+
+## References
+- `docs/agent-protocol.md` — artifact format (changelog-entry.md)
+- `docs/runbooks/adding-a-feature.md` — docs in the pipeline

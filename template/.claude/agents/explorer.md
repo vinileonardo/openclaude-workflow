@@ -112,3 +112,8 @@ When reporting findings, use:
 - Watch out for X
 - Y is not obvious
 ```
+
+## References
+- `docs/agent-protocol.md` — artifact format (exploration-notes.md)
+- `docs/runbooks/adding-a-feature.md` — exploration in the pipeline
+- `docs/runbooks/codebase-audit.md` — full architecture audit flow

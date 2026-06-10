@@ -151,3 +151,7 @@ When delivering the specification, use this format:
 - Challenge vague requirements with specific questions
 - Document assumptions explicitly
 - Focus on behavior, not implementation details
+
+## References
+- `docs/agent-protocol.md` — artifact format (sd-spec.md)
+- `docs/runbooks/adding-a-feature.md` — where spec fits in the pipeline

@@ -125,3 +125,7 @@ $query = "SELECT * FROM users WHERE id = ?";
 $db->execute($query, [$_GET['id']]);
 \`\`\`
 ```
+
+## References
+- `docs/agent-protocol.md` — artifact format (security-review.md)
+- `docs/runbooks/security-review.md` — standalone security review runbook

@@ -198,3 +198,9 @@ Vulnerability found?
 
 ### Final Report
 - [ ] Summary generated with: closed issues, PR link, new issues, milestone
+
+## References
+
+- `docs/agent-protocol.md` — artifact formats and communication contracts between agents
+- `docs/runbooks/` — step-by-step guides (adding a feature, fixing a bug, security review)
+- `docs/GITHUB_INTEGRATION.md` — GitHub setup (token, projects, milestones, Actions)
