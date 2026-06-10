@@ -2,7 +2,7 @@
 name: backend-dev
 description: Backend developer specializing in {{BACKEND_FRAMEWORK}}. Use for implementing APIs, endpoints, business logic, integrations, and database operations.
 tools: Read, Grep, Glob, Bash, Write, Edit
-model: inherit
+model: qwen3.7-plus
 permissionMode: acceptEdits
 memory: project
 color: blue

@@ -2,7 +2,7 @@
 name: frontend-dev
 description: Frontend developer specializing in {{FRONTEND_FRAMEWORK}}. Use for implementing components, pages, hooks, state management, API integration, and UI logic.
 tools: Read, Grep, Glob, Bash, Write, Edit
-model: inherit
+model: qwen3.7-plus
 permissionMode: acceptEdits
 memory: project
 color: green

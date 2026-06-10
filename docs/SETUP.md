@@ -2,8 +2,22 @@
 
 ## Prerequisites
 
-- [Claude Code](https://claude.ai/code) installed
+- [OpenClaude](https://github.com/Gitlawb/openclaude) installed
+- [OpenCode Go](https://github.com/opencode-ai/opencode-go) running as API provider
 - Git
+
+## Quick Setup (Any Project)
+
+```bash
+# 1. Start OpenClaude in your project
+cd your-project
+opencode
+
+# 2. Run the setup skill inside OpenClaude
+/init-workflow
+
+# 3. Follow the prompts to confirm detected values
+```
 
 ## Option A: New Project from Template
 
@@ -17,25 +31,12 @@ git init
 git add .
 git commit -m "Initial commit: AI workflow setup"
 
-# 3. Start Claude Code and run setup
-claude
+# 3. Start OpenClaude and run setup
+opencode
 /init-workflow
 ```
 
-## Option B: Existing Project
-
-```bash
-# 1. In your project root, start Claude Code
-cd your-project
-claude
-
-# 2. Run the setup skill
-/init-workflow
-
-# 3. Follow the prompts to confirm detected values
-```
-
-## Option C: Manual Setup
+## Option B: Manual Setup
 
 Copy the template files into your project:
 
@@ -63,14 +64,19 @@ Check that `AGENTS.md` and `.claude/agents/*.md` have the correct:
 - Docker container names
 - Database and cache configuration
 
-### 2. Configure Model Tiers
+### 2. Configure Models
 
-Choose your approach:
+Edit `~/.claude/settings.json`:
 
-- **Simple**: Set `model: inherit` in agents and configure `~/.claude/settings.json`
-- **Advanced**: Use a proxy (like oc-go-cc) for custom model routing
+```json
+{
+  "model": "deepseek-v4-flash",
+  "effortLevel": "high",
+  "hooks": {}
+}
+```
 
-See `docs/AGENT_TIERS.md` for details.
+Each agent in `.claude/agents/*.md` already declares its specific model. See `docs/AGENT_TIERS.md` for details.
 
 ### 3. Initialize Memory
 
@@ -80,15 +86,9 @@ mkdir -p .claude/projects/$(basename $(pwd))/memory/
 cp template/memory/MEMORY.md .claude/projects/$(basename $(pwd))/memory/
 ```
 
-### 4. Run a Test
+### 4. Customize for Your Stack
 
-Try a simple feature to verify the workflow:
-
-```bash
-claude
-# "Review this project structure and suggest improvements"
-# → Explorer agent activates
-```
+See `docs/CUSTOMIZATION.md` for adapting agents, models, and project-specific rules.
 
 ## Troubleshooting
 
@@ -96,6 +96,6 @@ claude
 |---|---|
 | `can't find /init-workflow skill` | Copy `skills/init-workflow/` to `.claude/skills/` in your project |
 | Agent commands are wrong | Edit the `.md` file in `.claude/agents/` to fix paths |
-| Agent not using expected model | Check frontmatter `model` field or proxy config |
+| Agent not using expected model | Check frontmatter `model` field in the agent file |
 | Memory not persisting | Verify `.claude/projects/<slug>/memory/MEMORY.md` exists |
 | Permission prompts too frequent | Add allow rules to `.claude/settings.json` |

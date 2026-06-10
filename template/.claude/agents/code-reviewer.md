@@ -2,7 +2,7 @@
 name: code-reviewer
 description: Senior code reviewer. Reviews PRs, analyzes code quality, identifies bugs, security issues, performance problems, and suggests improvements. Analyzes both backend and frontend code.
 tools: Read, Grep, Glob
-model: opus
+model: deepseek-v4-pro
 permissionMode: plan
 memory: project
 color: yellow

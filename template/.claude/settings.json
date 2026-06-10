@@ -1,4 +1,5 @@
 {
-  "effortLevel": "medium",
+  "model": "deepseek-v4-flash",
+  "effortLevel": "high",
   "hooks": {}
 }

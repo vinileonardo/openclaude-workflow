@@ -1,6 +1,6 @@
 # {{PROJECT_NAME}} — Project Memory
 
-> Auto-memory system for Claude Code. Persists learnings, decisions, and context across sessions.
+> Auto-memory system for OpenClaude. Persists learnings, decisions, and context across sessions.
 
 ## Memory Types
 

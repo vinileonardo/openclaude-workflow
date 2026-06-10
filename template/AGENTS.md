@@ -1,6 +1,6 @@
 # AGENTS.md
 
-> Full orchestration workflow for multi-agent AI development.
+> Full orchestration workflow for multi-agent AI development with OpenClaude.
 > Customize the `{{PLACEHOLDERS}}` for your project stack.
 
 ## Placeholders
@@ -22,26 +22,26 @@ Before using, replace:
 
 ## Agent Taxonomy
 
-| Agent | Tier | Tools | Permission | Role |
+| Agent | Model | Tools | Permission | Role |
 |---|---|---|---|---|
-| **spec-driver** | opus | Read, Grep, Glob | plan | Refines prompts into SDD specs |
-| **product-owner** | opus | Read, Grep, Glob | plan | Creates issues, manages backlog |
-| **explorer** | haiku | Read, Grep, Glob | plan | Codebase research, mapping |
-| **backend-dev** | inherit | All + Bash | acceptEdits | API, business logic, DB |
-| **frontend-dev** | inherit | All + Bash | acceptEdits | UI, components, state |
-| **test-writer** | inherit | All + Bash | acceptEdits | Unit/integration tests |
-| **code-reviewer** | opus | Read, Grep, Glob | plan | Quality review, bug detection |
-| **security-reviewer** | opus | Read, Grep, Glob | plan | Security audit, OWASP |
-| **documentation-writer** | haiku | Read, Grep, Glob | plan | Docs sync, CHANGELOG, ADRs |
-| **devops** | inherit | All + Bash | acceptEdits | Docker, CI/CD, deploy |
+| **spec-driver** | deepseek-v4-pro | Read, Grep, Glob | plan | Refines prompts into SDD specs |
+| **product-owner** | deepseek-v4-pro | Read, Grep, Glob | plan | Creates issues, manages backlog |
+| **explorer** | deepseek-v4-flash | Read, Grep, Glob | plan | Codebase research, mapping |
+| **backend-dev** | qwen3.7-plus | All + Bash | acceptEdits | API, business logic, DB |
+| **frontend-dev** | qwen3.7-plus | All + Bash | acceptEdits | UI, components, state |
+| **test-writer** | qwen3.7-plus | All + Bash | acceptEdits | Unit/integration tests |
+| **code-reviewer** | deepseek-v4-pro | Read, Grep, Glob | plan | Quality review, bug detection |
+| **security-reviewer** | deepseek-v4-pro | Read, Grep, Glob | plan | Security audit, OWASP |
+| **documentation-writer** | deepseek-v4-flash | Read, Grep, Glob | plan | Docs sync, CHANGELOG, ADRs |
+| **devops** | qwen3.7-plus | All + Bash | acceptEdits | Docker, CI/CD, deploy |
 
-## Model Tier Matrix
+## Model Guide
 
-| Tier | Purpose | Agents | Cost | Suggested |
-|---|---|---|---|---|
-| **Haiku** | Fast, read-only, cheap | Explorer, Doc Writer | $ | Claude Haiku / DeepSeek Flash |
-| **Sonnet** | Implementation, coding | Backend/Frontend/Test/DevOps | $$ | Claude Sonnet / Qwen 3.7+ |
-| **Opus** | Deep thinking, review | Spec Driver, PO, Code/Security Review | $$$ | Claude Opus / DeepSeek Pro |
+| Model | Purpose | Agents | Cost |
+|---|---|---|---|
+| **deepseek-v4-flash** | Fast, read-only, cheap | Explorer, Doc Writer | Low |
+| **qwen3.7-plus** | Implementation, coding | Backend/Frontend/Test/DevOps | Medium |
+| **deepseek-v4-pro** | Deep thinking, review | Spec Driver, PO, Code/Security Review | Higher |
 
 ## Orchestration Flow
 

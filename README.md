@@ -1,13 +1,13 @@
-# Claude Code Workflow
+# OpenClaude Workflow
 
-A professional multi-agent AI development workflow for Claude Code. Drop-in setup for any project.
+A professional multi-agent AI development workflow for OpenClaude. Drop-in setup for any project.
 
 ## Quick Start
 
 ```bash
-# Existing project: start Claude, run the setup
+# Existing project: start OpenClaude, run the setup
 cd your-project
-claude
+opencode
 /init-workflow
 ```
 
@@ -15,8 +15,8 @@ The skill analyzes your stack, commands, and architecture, then generates a comp
 
 ## Features
 
-- **10 Specialized Agents** — From spec to deploy, each with a clear role and model tier
-- **Model Tier Matrix** — Haiku (fast/cheap), Sonnet (balanced), Opus (deep thinking) — mapped to agents by task complexity
+- **10 Specialized Agents** — From spec to deploy, each with a clear role and model
+- **Native OpenCode Go Models** — deepseek-v4-pro, qwen3.7-plus, deepseek-v4-flash — mapped to agents by task complexity
 - **Full Orchestration Pipeline** — spec-driver → product-owner → explorer → devs → test-writer → code-reviewer + doc-writer → security-reviewer → devops
 - **Auto-Adaptation** — `/init-workflow` reads your project and generates files with correct paths and commands
 - **Structured Memory System** — Persistent cross-session context with typed memories (user, feedback, project, reference)
@@ -27,35 +27,35 @@ The skill analyzes your stack, commands, and architecture, then generates a comp
 
 ```
 spec-driver → product-owner → explorer → devs → test-writer → code-reviewer
-                                                                  + doc-writer (parallel)
-                                                                       ↓
-                                                              security-reviewer
-                                                                       ↓
-                                                                    devops
+                                                                 + doc-writer (parallel)
+                                                                      ↓
+                                                             security-reviewer
+                                                                      ↓
+                                                                   devops
 ```
 
 ### Agent Roles
 
-| Agent | Tier | Purpose |
+| Agent | Model | Purpose |
 |---|---|---|
-| spec-driver | opus | SDD specs from vague requests |
-| product-owner | opus | Issues, backlog, priorities |
-| explorer | haiku | Codebase mapping, research |
-| backend-dev | sonnet | API, logic, database |
-| frontend-dev | sonnet | UI, components, state |
-| test-writer | sonnet | Unit/integration tests |
-| code-reviewer | opus | Quality, bugs, standards |
-| security-reviewer | opus | OWASP, audit, compliance |
-| documentation-writer | haiku | Docs, changelog, ADRs |
-| devops | sonnet | Docker, CI/CD, deploy |
+| spec-driver | deepseek-v4-pro | SDD specs from vague requests |
+| product-owner | deepseek-v4-pro | Issues, backlog, priorities |
+| explorer | deepseek-v4-flash | Codebase mapping, research |
+| backend-dev | qwen3.7-plus | API, logic, database |
+| frontend-dev | qwen3.7-plus | UI, components, state |
+| test-writer | qwen3.7-plus | Unit/integration tests |
+| code-reviewer | deepseek-v4-pro | Quality, bugs, standards |
+| security-reviewer | deepseek-v4-pro | OWASP, audit, compliance |
+| documentation-writer | deepseek-v4-flash | Docs, changelog, ADRs |
+| devops | qwen3.7-plus | Docker, CI/CD, deploy |
 
-## Model Tier Guide
+## Model Guide
 
-| Tier | Cost | Speed | Best For | Agents |
+| Model | Provider | Speed | Best For | Agents |
 |---|---|---|---|---|
-| Haiku | $ | Fastest | Read-only, scanning, simple output | Explorer, Doc Writer |
-| Sonnet | $$ | Fast | Implementation, commands, testing | Backend/Frontend/Test/DevOps |
-| Opus | $$$ | Slowest | Deep analysis, reviews, decisions | Spec/PO/Code/Security Review |
+| deepseek-v4-flash | DeepSeek | Fastest | Read-only, scanning, simple output | Explorer, Doc Writer |
+| qwen3.7-plus | Qwen | Fast | Implementation, commands, testing | Backend/Frontend/Test/DevOps |
+| deepseek-v4-pro | DeepSeek | Slower | Deep analysis, reviews, decisions | Spec/PO/Code/Security Review |
 
 ## Project Structure
 
@@ -65,7 +65,7 @@ claude-code-workflow/
 │   ├── CLAUDE.md                      # Pointer with placeholders
 │   ├── AGENTS.md                      # Orchestration workflow
 │   ├── .claude/
-│   │   ├── settings.json              # Basic config
+│   │   ├── settings.json              # OpenClaude config
 │   │   └── agents/                    # 10 agent definitions
 │   └── memory/
 │       ├── MEMORY.md                  # Memory index template
@@ -77,9 +77,9 @@ claude-code-workflow/
 ├── docs/
 │   ├── SETUP.md                       # Setup guide
 │   ├── CUSTOMIZATION.md               # Adaptation guide
-│   └── AGENT_TIERS.md                 # Model tier philosophy
-└── proxy/
-    └── oc-go-cc-config.example.json   # Example proxy config
+│   └── AGENT_TIERS.md                 # Model philosophy
+└── archive/
+    └── oc-go-cc-config.example.json   # Archived proxy reference
 ```
 
 ## License

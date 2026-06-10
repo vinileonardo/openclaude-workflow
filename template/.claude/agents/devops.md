@@ -2,7 +2,7 @@
 name: devops
 description: DevOps and infrastructure specialist. Use for configuring Docker, CI/CD, migrations, deploy, monitoring, performance, and dev environment optimization.
 tools: Read, Grep, Glob, Bash, Write, Edit
-model: inherit
+model: qwen3.7-plus
 permissionMode: acceptEdits
 memory: project
 color: red

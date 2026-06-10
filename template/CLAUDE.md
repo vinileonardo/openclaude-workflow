@@ -1,4 +1,4 @@
-# {{PROJECT_NAME}} — Claude Code Context
+# {{PROJECT_NAME}} — OpenClaude Context
 
 Condensed reference. For full workflow orchestration, see `AGENTS.md`.
 
@@ -25,5 +25,5 @@ This project uses a structured multi-agent workflow. See `AGENTS.md` for the ful
 
 - `AGENTS.md` — Full workflow orchestration and agent definitions
 - `.claude/agents/` — Individual agent configurations
-- `.claude/settings.json` — Claude Code settings
+- `.claude/settings.json` — OpenClaude settings
 - `docs/` — Project documentation

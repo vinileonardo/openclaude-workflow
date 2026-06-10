@@ -9,7 +9,7 @@
 name: my-agent
 description: What this agent does
 tools: Read, Grep, Glob, Bash, Write, Edit
-model: sonnet        # inherit, haiku, sonnet, or opus
+model: qwen3.7-plus        # deepseek-v4-pro, qwen3.7-plus, or deepseek-v4-flash
 permissionMode: acceptEdits
 memory: project
 color: blue
@@ -26,30 +26,31 @@ You are a specialized agent that...
 
 Edit the file in `.claude/agents/<name>.md`:
 
-- **Frontmatter**: Change model tier, permissions, color
+- **Frontmatter**: Change model, permissions, color
 - **Description**: Update what the agent does
 - **Body**: Add project-specific rules, commands, patterns
 
-## Changing Model Tier Assignments
+## Changing Model Assignments
 
 ### Per Agent
 
 Edit the `model` field in the agent's frontmatter:
 
 ```yaml
-model: opus    # Pin to opus tier
-model: inherit # Use session default
+model: deepseek-v4-pro   # Deep thinking
+model: qwen3.7-plus      # Balanced workhorse
+model: deepseek-v4-flash # Fast & cheap
 ```
 
-### Global (via proxy)
+### Global (session default)
 
-Map Claude Code model names to your models:
+Set in `~/.claude/settings.json`:
 
-| Claude Model | Your Model | Tier |
-|---|---|---|
-| `claude-haiku-4-5-20251001` | your-fast-model | Haiku |
-| `claude-sonnet-4-6` | your-balanced-model | Sonnet |
-| `claude-opus-4-6` | your-powerful-model | Opus |
+```json
+{
+  "model": "deepseek-v4-flash"
+}
+```
 
 ## Project-Specific Rules in AGENTS.md
 
@@ -107,8 +108,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: AI Review
         run: |
-          echo "Trigger Claude Code review here"
-          # Claude Code + agents review the PR
+          echo "Trigger OpenClaude review here"
 ```
 
 ## Multi-Language Projects

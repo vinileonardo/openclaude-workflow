@@ -2,7 +2,7 @@
 name: test-writer
 description: Automated testing specialist. Writes unit and integration tests for backend ({{BACKEND_TEST_FRAMEWORK}}) and frontend ({{FRONTEND_TEST_FRAMEWORK}}). Ensures coverage and test quality.
 tools: Read, Grep, Glob, Bash, Write, Edit
-model: inherit
+model: qwen3.7-plus
 permissionMode: acceptEdits
 memory: project
 color: orange

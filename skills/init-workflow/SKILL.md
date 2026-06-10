@@ -4,7 +4,7 @@ description: Analyze your project and set up the full AI workflow ecosystem — 
 user-invocable: true
 ---
 
-# /init-workflow — AI Workflow Setup
+# /init-workflow — AI Workflow Setup (OpenClaude)
 
 Analyzes your project and generates a complete multi-agent AI development workflow adapted to your stack, commands, and architecture.
 
@@ -31,7 +31,7 @@ I generate adapted files into `.claude/workflow-setup/`:
 - `CLAUDE.md` — project-specific pointer
 - `AGENTS.md` — full orchestration workflow
 - `.claude/agents/*.md` — all 10 agent definitions
-- `.claude/settings.json` — basic Claude Code config
+- `.claude/settings.json` — basic OpenClaude config
 - `memory/MEMORY.md` — memory index template
 
 All files are adapted to your detected stack with correct paths and commands.
@@ -67,18 +67,18 @@ The orchestration workflow containing:
 
 ### Agent Definitions (`.claude/agents/*.md`)
 
-| Agent | Tier | Purpose |
+| Agent | Model | Purpose |
 |---|---|---|
-| **spec-driver** | opus | Spec Driven Development — refines requests into scenarios |
-| **product-owner** | opus | Creates issues, manages backlog, writes user stories |
-| **explorer** | haiku | Codebase research, architecture mapping, dependency analysis |
-| **backend-dev** | sonnet | API implementation, business logic, database operations |
-| **frontend-dev** | sonnet | UI components, state management, API integration |
-| **test-writer** | sonnet | Unit/integration tests, coverage |
-| **code-reviewer** | opus | Quality review, bug detection, standards compliance |
-| **security-reviewer** | opus | Security audit, OWASP Top 10, compliance |
-| **documentation-writer** | haiku | Docs sync, CHANGELOG, ADRs |
-| **devops** | sonnet | Docker, CI/CD, migrations, deploy |
+| **spec-driver** | deepseek-v4-pro | Spec Driven Development — refines requests into scenarios |
+| **product-owner** | deepseek-v4-pro | Creates issues, manages backlog, writes user stories |
+| **explorer** | deepseek-v4-flash | Codebase research, architecture mapping, dependency analysis |
+| **backend-dev** | qwen3.7-plus | API implementation, business logic, database operations |
+| **frontend-dev** | qwen3.7-plus | UI components, state management, API integration |
+| **test-writer** | qwen3.7-plus | Unit/integration tests, coverage |
+| **code-reviewer** | deepseek-v4-pro | Quality review, bug detection, standards compliance |
+| **security-reviewer** | deepseek-v4-pro | Security audit, OWASP Top 10, compliance |
+| **documentation-writer** | deepseek-v4-flash | Docs sync, CHANGELOG, ADRs |
+| **devops** | qwen3.7-plus | Docker, CI/CD, migrations, deploy |
 
 ### Settings
 Basic `.claude/settings.json` with default effort level.
@@ -111,5 +111,5 @@ This skill reads from the `claude-code-workflow` template repository. Files are 
 
 1. Review the generated files for accuracy
 2. Customize agent descriptions for your domain
-3. Configure model tiers in your Claude Code settings or proxy config
+3. Configure models in your OpenClaude settings or agent frontmatter
 4. Start using the workflow for new features
