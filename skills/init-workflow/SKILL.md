@@ -23,6 +23,8 @@ Supports two modes:
 
 /init-workflow --adopt      # Adopt existing project (merge, preserve, bootstrap)
 /init-workflow --adopt --dry-run  # Preview changes without writing
+
+/init-workflow --health     # Diagnostic: check workflow consistency
 ```
 
 ---
@@ -247,6 +249,64 @@ This skill uses two reference files for stack detection and template generation:
 
 - `references/discovery-patterns.md` — How to detect project stack, commands, and architecture
 - `references/stack-patterns.md` — Maps common stacks to placeholder values
+
+---
+
+## Mode: `--health` (Diagnostic)
+
+Diagnoses the workflow setup in any project. Read-only — never modifies files. Can be run at any time, on any project, regardless of whether the workflow is installed.
+
+### Checks Performed
+
+| # | Check | What It Verifies |
+|---|---|---|
+| H1 | **File Integrity** | `CLAUDE.md`, `AGENTS.md`, `.claude/` dir, `.claude/settings.json`, `memory/MEMORY.md` exist |
+| H2 | **Placeholder Audit** | Scans all workflow files for unfilled `{{...}}` placeholders |
+| H3 | **Agent Consistency** | All agents in `AGENTS.md` have `.md` files; no orphan agent files; frontmatter valid |
+| H4 | **Settings Validation** | `settings.json` is valid JSON; model is known; hooks syntax valid |
+| H5 | **Memory Health** | All files listed in `MEMORY.md` exist; no orphan memory files |
+| H6 | **Command Dry-Run** | Lint/test/build commands from config are valid (syntax check, not execution) |
+
+### Output Format
+
+```
+🏥 Health Report: my-project
+─────────────────────────────────────────────────────────────
+H1  ✅ File Integrity         — 5/5 files present
+H2  ⚠️  Placeholder Audit     — 2 unfilled placeholders found
+H3  ❌ Agent Consistency      — 1 agent missing file, 1 orphan
+H4  ✅ Settings Validation    — valid JSON, deepseek-v4-flash
+H5  ✅ Memory Health          — 3 files, all indexed
+H6  ⚠️  Command Dry-Run       — 1 command has invalid path
+
+📊 Overall: 4 passed, 2 warnings, 1 failed
+
+🔧 Recommended actions:
+  - Run /init-workflow --adopt to fix placeholder and agent issues
+  - Fix settings.json syntax error at line 12
+  - Update test command path in AGENTS.md
+```
+
+### Severity Levels
+
+| Icon | Meaning |
+|---|---|
+| ✅ **PASS** | Check passed, no action needed |
+| ⚠️ **WARNING** | Non-blocking issue (unfilled placeholder, orphan file) |
+| ❌ **FAIL** | Blocking issue (missing critical file, invalid JSON) |
+
+### When to Run
+
+- **After greenfield setup**: verify everything was generated correctly
+- **After adoption**: confirm merge didn't break anything
+- **Periodically**: catch drift as the project evolves
+- **Before major changes**: ensure the workflow is healthy before relying on it
+
+### What --health Does NOT Do
+
+- Does not modify any files
+- Does not run lint/test/build commands (only syntax-checks the configured paths)
+- Does not require the workflow to be installed (runs on any project)
 
 ---
 

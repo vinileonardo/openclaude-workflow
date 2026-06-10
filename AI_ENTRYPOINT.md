@@ -26,6 +26,9 @@ Usuário te deu a URL deste repo + o projeto dele?
 ├── Projeto EXISTENTE (já tem código, convenções, talvez setup parcial)?
 │   → Vá para [Setup Adoption](#setup-adoption)
 │
+├── Já tem o setup e quer VERIFICAR se está tudo certo?
+│   → Use `/init-workflow --health`
+│
 └── Só quer entender o sistema?
     → Leia a [documentação completa](docs/SKILL_GUIDE.md)
 ```
@@ -122,10 +125,11 @@ Você mesmo pode fazer o trabalho de adoção:
 
 ## Pós-Setup (para ambos os modos)
 
-1. Sugira revisar os arquivos gerados/mergeados
-2. Se aplicável, sugira customizar agentes para o domínio do projeto
-3. Sugira testar o workflow em uma tarefa pequena primeiro
-4. Mostre como usar o sistema de memória (`user`, `feedback`, `project`, `reference`)
+1. **Execute o diagnóstico** — peça para rodar `/init-workflow --health` para verificar se está tudo consistente
+2. Sugira revisar os arquivos gerados/mergeados
+3. Se aplicável, sugira customizar agentes para o domínio do projeto
+4. Sugira testar o workflow em uma tarefa pequena primeiro
+5. Mostre como usar o sistema de memória (`user`, `feedback`, `project`, `reference`)
 
 ---
 

@@ -12,6 +12,7 @@ Two modes:
 |---|---|---|
 | **Greenfield** | `/init-workflow` | New projects, or projects without any existing setup |
 | **Adoption** | `/init-workflow --adopt` | Existing projects with code, conventions, and possibly existing workflow |
+| **Diagnostic** | `/init-workflow --health` | Any project — check workflow consistency |
 
 ---
 
@@ -23,6 +24,7 @@ Two modes:
 /init-workflow --update           # Regenerate from existing template
 /init-workflow --adopt            # Adopt existing project
 /init-workflow --adopt --dry-run  # Preview adoption changes without writing
+/init-workflow --health           # Diagnostic: check workflow consistency
 ```
 
 ---
@@ -103,6 +105,37 @@ Summary of what changed, what was preserved, and suggested next steps.
 
 ---
 
+## Diagnostic Mode (`/init-workflow --health`)
+
+Best for: **any project** — checks if the workflow setup is consistent and healthy. Read-only, never modifies files.
+
+### Checks Performed
+
+| Check | What It Verifies |
+|---|---|
+| **File Integrity** | `CLAUDE.md`, `AGENTS.md`, `.claude/`, `settings.json`, `MEMORY.md` exist |
+| **Placeholder Audit** | Scans all workflow files for unfilled `{{...}}` placeholders |
+| **Agent Consistency** | All agents in `AGENTS.md` have `.md` files; no orphans; frontmatter valid |
+| **Settings Validation** | `settings.json` is valid JSON, model is known, hooks syntax valid |
+| **Memory Health** | All files listed in `MEMORY.md` exist; no orphan memory files |
+| **Command Dry-Run** | Lint/test/build paths from config are syntactically valid |
+
+### Severity
+
+| Icon | Meaning |
+|---|---|
+| ✅ PASS | No action needed |
+| ⚠️ WARNING | Non-blocking (unfilled placeholder, orphan file) |
+| ❌ FAIL | Blocking (missing critical file, invalid JSON) |
+
+### When to Run
+
+- After greenfield setup or adoption to verify correctness
+- Periodically to catch drift as the project evolves
+- Before major changes to ensure the workflow is healthy
+
+---
+
 ## Flags Reference
 
 | Flag | Mode | Effect |
@@ -113,6 +146,7 @@ Summary of what changed, what was preserved, and suggested next steps.
 | `--adopt` | Adoption | Full inventory + bootstrap + diff + merge |
 | `--adopt --dry-run` | Adoption | Preview only — no files written |
 | `--adopt --check` | Adoption | Skip to inventory only |
+| `--health` | Diagnostic | Run all checks, read-only, no files written |
 
 ---
 
@@ -172,3 +206,4 @@ Save important context as typed memories (`user`, `feedback`, `project`, `refere
 | Memory not persisting | Verify `.claude/projects/<slug>/memory/MEMORY.md` exists |
 | `--adopt` overwrote my settings | Re-run with `--adopt --dry-run` first to preview |
 | Too many permission prompts | Add allow rules to `.claude/settings.json` |
+| Workflow feels broken after changes | Run `/init-workflow --health` to diagnose |
