@@ -13,18 +13,22 @@ Two modes:
 | **Greenfield** | `/init-workflow` | New projects, or projects without any existing setup |
 | **Adoption** | `/init-workflow --adopt` | Existing projects with code, conventions, and possibly existing workflow |
 | **Diagnostic** | `/init-workflow --health` | Any project — check workflow consistency |
+| **Cleanup** | `/init-workflow --prune` | Any project — remove orphans, stale temps, unindexed memories |
 
 ---
 
 ## Commands
 
 ```bash
-/init-workflow                    # Full setup (greenfield)
-/init-workflow --check            # Discover only, no file generation
-/init-workflow --update           # Regenerate from existing template
-/init-workflow --adopt            # Adopt existing project
-/init-workflow --adopt --dry-run  # Preview adoption changes without writing
-/init-workflow --health           # Diagnostic: check workflow consistency
+/init-workflow                        # Full setup (greenfield)
+/init-workflow --check                # Discover only, no file generation
+/init-workflow --update               # Regenerate from existing template
+/init-workflow --adopt                # Adopt existing project
+/init-workflow --adopt --dry-run      # Preview adoption changes without writing
+/init-workflow --health               # Diagnostic: check workflow consistency
+/init-workflow --prune                # Cleanup: remove orphans, stale temps
+/init-workflow --prune --dry-run      # Preview what would be pruned
+/init-workflow --prune --force        # Prune without confirmation prompt
 ```
 
 ---
@@ -136,6 +140,29 @@ Best for: **any project** — checks if the workflow setup is consistent and hea
 
 ---
 
+## Cleanup Mode (`/init-workflow --prune`)
+
+Best for: **any project** — removes orphaned and stale files left behind as the project evolves.
+
+### What Gets Pruned
+
+| Item | Deletes |
+|---|---|
+| **Orphan Agents** | `.claude/agents/*.md` not referenced in `AGENTS.md` |
+| **Stale Temp Files** | `.claude/workflow-setup/` directory |
+| **Orphan Memories** | Files in `memory/` not listed in `MEMORY.md` |
+| **Empty Dirs** | Empty directories left after pruning |
+
+### Behavior
+
+| Flag | Behavior |
+|---|---|
+| `--prune` | Preview + confirm before deleting |
+| `--prune --dry-run` | Preview only, no deletion |
+| `--prune --force` | Skip confirmation, prune immediately |
+
+---
+
 ## Flags Reference
 
 | Flag | Mode | Effect |
@@ -147,6 +174,9 @@ Best for: **any project** — checks if the workflow setup is consistent and hea
 | `--adopt --dry-run` | Adoption | Preview only — no files written |
 | `--adopt --check` | Adoption | Skip to inventory only |
 | `--health` | Diagnostic | Run all checks, read-only, no files written |
+| `--prune` | Cleanup | Remove orphans + stale temps (preview first) |
+| `--prune --dry-run` | Cleanup | Preview only, no deletion |
+| `--prune --force` | Cleanup | Prune without confirmation |
 
 ---
 

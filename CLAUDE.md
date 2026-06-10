@@ -101,6 +101,8 @@ Memórias persistentes entre sessões, tipadas em 4 categorias:
 /init-workflow --adopt         # Adotar projeto existente (merge + bootstrap)
 /init-workflow --adopt --dry-run  # Preview da adoção sem escrever nada
 /init-workflow --health        # Diagnóstico: verificar consistência do setup
+/init-workflow --prune         # Limpeza: remover arquivos órfãos e temporários
+/init-workflow --prune --dry-run  # Preview da limpeza sem deletar
 ```
 
 Não há build, test, ou lint para este repositório — ele é puramente markdown template.

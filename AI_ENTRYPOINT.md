@@ -29,6 +29,9 @@ Usuário te deu a URL deste repo + o projeto dele?
 ├── Já tem o setup e quer VERIFICAR se está tudo certo?
 │   → Use `/init-workflow --health`
 │
+├── Quer LIMPAR arquivos órfãos (agents antigos, temporários)?
+│   → Use `/init-workflow --prune` (preview primeiro)
+│
 └── Só quer entender o sistema?
     → Leia a [documentação completa](docs/SKILL_GUIDE.md)
 ```
@@ -125,11 +128,11 @@ Você mesmo pode fazer o trabalho de adoção:
 
 ## Pós-Setup (para ambos os modos)
 
-1. **Execute o diagnóstico** — peça para rodar `/init-workflow --health` para verificar se está tudo consistente
-2. Sugira revisar os arquivos gerados/mergeados
-3. Se aplicável, sugira customizar agentes para o domínio do projeto
-4. Sugira testar o workflow em uma tarefa pequena primeiro
-5. Mostre como usar o sistema de memória (`user`, `feedback`, `project`, `reference`)
+4. **Pós-validação** — rode `/init-workflow --health` para confirmar que está tudo consistente
+5. Sugira revisar os arquivos gerados/mergeados
+6. Se aplicável, sugira customizar agentes para o domínio do projeto
+7. Sugira testar o workflow em uma tarefa pequena primeiro (veja `template/docs/runbooks/adding-a-feature.md`)
+8. Mostre como usar o sistema de memória (`user`, `feedback`, `project`, `reference`)
 
 ---
 
@@ -142,5 +145,6 @@ Leia, nesta ordem:
 3. **`docs/SKILL_GUIDE.md`** — referência completa da skill
 4. **`skills/init-workflow/SKILL.md`** — implementação detalhada da skill
 5. **`template/AGENTS.md`** — orquestração dos 10 agentes
-6. **`docs/CUSTOMIZATION.md`** — como adaptar para qualquer stack
-7. **`template/.claude/agents/*.md`** (pelo menos 2-3 agentes) — formato dos agentes
+6. **`template/docs/runbooks/`** — runbooks de uso diário (adicionar feature, corrigir bug, revisar segurança)
+7. **`docs/CUSTOMIZATION.md`** — como adaptar para qualquer stack
+8. **`template/.claude/agents/*.md`** (pelo menos 2-3 agentes) — formato dos agentes

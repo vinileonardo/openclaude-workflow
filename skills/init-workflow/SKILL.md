@@ -25,6 +25,8 @@ Supports two modes:
 /init-workflow --adopt --dry-run  # Preview changes without writing
 
 /init-workflow --health     # Diagnostic: check workflow consistency
+/init-workflow --prune      # Clean up: remove orphan agents, stale temps, unindexed memories
+/init-workflow --prune --dry-run  # Preview what would be pruned before deleting
 ```
 
 ---
@@ -196,6 +198,54 @@ After merge, I present:
   2. Customize the new agents for your domain
   3. Try the workflow on a small feature
 ```
+
+---
+
+## Mode: `--prune` (Cleanup)
+
+Removes orphaned and stale files left behind as the project evolves. Read-only with `--dry-run` — always preview before deleting.
+
+### What Gets Pruned
+
+| # | Check | Deletes |
+|---|---|---|
+| P1 | **Orphan Agents** | `.claude/agents/*.md` files not referenced in `AGENTS.md` taxonomy |
+| P2 | **Stale Temp Files** | `.claude/workflow-setup/` directory (generated during setup, not needed after) |
+| P3 | **Orphan Memories** | Memory files in `memory/` not listed in `MEMORY.md` index |
+| P4 | **Empty Dirs** | Empty directories left after pruning |
+
+### Dry-Run (Default Behavior)
+
+With `--prune` alone, I show a preview and ask for confirmation before deleting:
+
+```
+🧹 Prune Preview: my-project
+─────────────────────────────────────────────────────
+🗑️  2 orphan agents (not in AGENTS.md):
+      - .claude/agents/old-deploy-agent.md
+      - .claude/agents/experimental-scraper.md
+
+🗑️  1 stale temp directory:
+      - .claude/workflow-setup/
+
+🗑️  1 orphan memory (not in MEMORY.md):
+      - memory/draft-notes.md
+
+📦 Total: 4 items to remove
+
+❓ Proceed with pruning? [y/N]
+```
+
+### Force Clean (Skip Confirm)
+
+With `--prune --force`, I skip the confirmation prompt and prune immediately. Use with caution.
+
+### What --prune Does NOT Do
+
+- Does not modify `AGENTS.md`, `CLAUDE.md`, or any active configuration
+- Does not remove agents that ARE referenced in `AGENTS.md`
+- Does not remove settings, memories that are properly indexed
+- Does not touch files outside `.claude/agents/`, `.claude/workflow-setup/`, or `memory/`
 
 ---
 
