@@ -189,3 +189,62 @@ Detect from lock files:
 - `yarn.lock` → yarn
 - `pnpm-lock.yaml` → pnpm
 - `bun.lockb` → bun
+
+## GitHub Integration Detection
+
+Detect if the project already has GitHub setup and what level of integration exists.
+
+### GitHub CLI
+
+```bash
+# Check if gh CLI is installed
+gh --version
+
+# Check authentication
+gh auth status
+
+# Get current user
+gh api user --jq '.login'
+
+# Get remote info
+git remote get-url origin  # extract owner/repo
+```
+
+### Existing GitHub Files
+
+| File/Path | Signals |
+|---|---|
+| `.github/ISSUE_TEMPLATE/` | Custom issue templates exist |
+| `.github/workflows/` | CI/CD workflows exist |
+| `.github/workflows/ci.yml` | CI configured |
+| `.github/workflows/deploy.yml` | Deploy configured |
+| `.github/labeler.yml` | Labeler configured |
+
+### Labels
+
+Check existing labels:
+
+```bash
+gh label list  # --json name,color,description
+```
+
+If `epic`, `story`, `task`, `spike`, `bug` exist → labels are set up.
+
+### Branch Protection
+
+Check via:
+
+```bash
+gh api repos/:owner/:repo/branches/main/protection
+```
+
+If 404 → no protection. If returns data → protection exists.
+
+### Suggested Detection Placeholders
+
+| Placeholder | Detection Source |
+|---|---|
+| `GITHUB_USERNAME` | `gh api user --jq .login` or `git config user.name` |
+| `CI_MAIN_BRANCH` | `git remote show origin` HEAD branch, or main |
+| `CI_STAGING_BRANCH` | Ask user, or staging by convention |
+| `DOCKER_DEPLOY_CMD` | From docker-compose or ask |

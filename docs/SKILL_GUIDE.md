@@ -234,6 +234,8 @@ Best for: **any project** — removes orphaned and stale files left behind as th
 | `--prune` | Cleanup | Remove orphans + stale temps (preview first) |
 | `--prune --dry-run` | Cleanup | Preview only, no deletion |
 | `--prune --force` | Cleanup | Prune without confirmation |
+| `--github` | GitHub | Configure GitHub integration standalone |
+| `--github --dry-run` | GitHub | Preview GitHub changes without writing |
 
 ---
 

@@ -27,6 +27,9 @@ Supports two modes:
 /init-workflow --health     # Diagnostic: check workflow consistency
 /init-workflow --prune      # Clean up: remove orphan agents, stale temps, unindexed memories
 /init-workflow --prune --dry-run  # Preview what would be pruned before deleting
+
+/init-workflow --github            # Configure GitHub integration standalone
+/init-workflow --github --dry-run  # Preview GitHub changes without writing
 ```
 
 ---
@@ -306,6 +309,50 @@ With `--prune --force`, I skip the confirmation prompt and prune immediately. Us
 - Does not remove agents that ARE referenced in `AGENTS.md`
 - Does not remove settings, memories that are properly indexed
 - Does not touch files outside `.claude/agents/`, `.claude/workflow-setup/`, or `memory/`
+
+---
+
+## Mode: `--github` (Standalone GitHub Setup)
+
+Best for: **projects that skipped GitHub during initial setup**. Configures GitHub integration without re-running greenfield or adopt.
+
+### What It Does
+
+1. **Detect current state**:
+   - GitHub CLI installed? (`gh auth status`)
+   - `.github/` already exists? What's already in it?
+   - Git remote configured? Detect owner/repo, main/staging branches
+
+2. **Ask for values**:
+   - GitHub username (or detect from `git config user.name` / `gh api user`)
+   - Main and staging branch names
+   - Whether to create labels (epic, story, task, spike, bug)
+
+3. **Generate** (only what's missing):
+   - `.github/ISSUE_TEMPLATE/epic.md`, `story.md`, `task.md`, `bug.md`
+   - `.github/workflows/ci.yml`, `deploy.yml`, `review.yml`
+   - All adapted to the project's detected stack
+
+4. **Create labels** (if opted in and `gh` is available):
+   ```bash
+   gh label create epic --color 5319E7
+   gh label create story --color 0E8A16
+   gh label create task --color 1D76DB
+   gh label create spike --color FBFF38
+   gh label create bug --color D73A4A
+   ```
+
+5. **Offer branch protection** (guide, not automatic): show recommended rules
+
+### Dry-Run
+
+With `--github --dry-run`, show what would be generated and which labels would be created. No files written.
+
+### What --github Does NOT Do
+
+- Does not modify existing `.github/` content (only adds missing files)
+- Does not modify CLAUDE.md, AGENTS.md, agents, or memories
+- Does not require the project to have been set up with greenfield/adopt first
 
 ---
 
