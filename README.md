@@ -1,6 +1,6 @@
 # OpenClaude Workflow
 
-A professional multi-agent AI development workflow for [OpenClaude](https://github.com/Gitlawb/openclaude) (the open-source CLI for AI-assisted coding). Drop-in setup for any project.
+A professional multi-agent AI development workflow for [OpenClaude](https://github.com/Gitlawb/openclaude) (the open-source CLI for AI-assisted coding). Drop-in setup for any project — **greenfield or existing**.
 
 ## Quick Start
 
@@ -24,11 +24,50 @@ source ~/.bashrc
 cd your-project
 opencode
 
-# 5. Run the setup skill
+# 5a. New project? Run the greenfield setup
 /init-workflow
+
+# 5b. Existing project with code already written? Run adoption
+/init-workflow --adopt
 ```
 
 The skill analyzes your stack, commands, and architecture, then generates a complete agent ecosystem adapted to your project.
+
+---
+
+## Two Setup Modes
+
+| Mode | Command | Best For |
+|---|---|---|
+| **Greenfield** | `/init-workflow` | New projects or no existing workflow setup |
+| **Adoption** | `/init-workflow --adopt` | Existing projects with code, conventions, and possible existing workflow |
+
+### Greenfield (`/init-workflow`)
+
+1. **Discovery** — reads your project (stack, commands, structure)
+2. **Generation** — creates adapted agent files, CLAUDE.md, AGENTS.md, memory
+3. **Confirmation** — shows what was detected, asks for approval
+4. **Guidance** — explains how to use the workflow
+
+### Adoption (`/init-workflow --adopt`)
+
+For projects that already have code and possibly a partial setup:
+
+1. **Inventory** — scans existing workflow files, configs, and git history
+2. **Memory Bootstrapping** — extracts coding conventions and patterns from existing code
+3. **Diff Plan** — previews what will be created, overwritten, or preserved (use `--dry-run` to preview only)
+4. **Merge & Write** — merges templates with your existing content (preserves custom agents, rules, memories)
+5. **Adoption Report** — summary of what changed and next steps
+
+```bash
+# Preview adoption changes without writing
+/init-workflow --adopt --dry-run
+
+# Quick inventory only
+/init-workflow --check
+```
+
+---
 
 ## Features
 
@@ -36,6 +75,7 @@ The skill analyzes your stack, commands, and architecture, then generates a comp
 - **Native OpenCode Go Models** — deepseek-v4-pro, qwen3.7-plus, deepseek-v4-flash — mapped to agents by task complexity
 - **Full Orchestration Pipeline** — spec-driver → product-owner → explorer → devs → test-writer → code-reviewer + doc-writer → security-reviewer → devops
 - **Auto-Adaptation** — `/init-workflow` reads your project and generates files with correct paths and commands
+- **Adoption Mode** — `/init-workflow --adopt` bootstraps memory from existing code and merges with your current setup
 - **Structured Memory System** — Persistent cross-session context with typed memories (user, feedback, project, reference)
 - **Reviewer Decision Trees** — Clear rules for blocking vs. non-blocking feedback
 - **Quality Gates** — Code review before security review before merge
@@ -93,11 +133,22 @@ openclaude-workflow/
 │       └── references/                # Detection patterns
 ├── docs/
 │   ├── SETUP.md                       # Setup guide
+│   ├── SKILL_GUIDE.md                 # Full skill reference
 │   ├── CUSTOMIZATION.md               # Adaptation guide
 │   └── AGENT_TIERS.md                 # Model philosophy
 └── archive/
     └── oc-go-cc-config.example.json   # Archived proxy reference
 ```
+
+## Documentation
+
+| File | Description |
+|---|---|
+| `AI_ENTRYPOINT.md` | **Leitura obrigatória para IAs** — fluxo de decisão ao ser direcionada ao repo |
+| `docs/SETUP.md` | Setup guide with prerequisites and troubleshooting |
+| `docs/SKILL_GUIDE.md` | Complete reference for the `/init-workflow` skill |
+| `docs/CUSTOMIZATION.md` | How to add/modify agents, models, and project rules |
+| `docs/AGENT_TIERS.md` | Model philosophy and tier strategy |
 
 ## License
 
