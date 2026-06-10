@@ -36,8 +36,12 @@ openclaude-workflow/
 │       └── references/          # Padrões de detecção
 ├── docs/
 │   ├── SETUP.md                 # Guia de setup
+│   ├── SKILL_GUIDE.md           # Referência completa da skill
+│   ├── GITHUB_INTEGRATION.md    # Integração com GitHub
 │   ├── CUSTOMIZATION.md         # Guia de customização
 │   └── AGENT_TIERS.md           # Filosofia de modelos
+├── CHANGELOG.md                 # Histórico de versões
+├── VERSION                      # Versão semântica atual
 └── archive/                     # Referências legadas
 ```
 

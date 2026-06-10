@@ -148,5 +148,6 @@ Leia, nesta ordem:
 6. **`template/docs/agent-protocol.md`** — formato de saída de cada agente e fluxo de artefatos
 7. **`template/docs/runbooks/`** — runbooks de uso diário (adicionar feature, corrigir bug, revisar segurança)
 8. **`template/docs/runbooks/first-task.md`** — tarefa de validação do workflow (hello world)
-9. **`docs/CUSTOMIZATION.md`** — como adaptar para qualquer stack
-10. **`template/.claude/agents/*.md`** (pelo menos 2-3 agentes) — formato dos agentes
+9. **`docs/GITHUB_INTEGRATION.md`** — integração completa com GitHub (token, projects, milestones, actions)
+10. **`docs/CUSTOMIZATION.md`** — como adaptar para qualquer stack
+11. **`template/.claude/agents/*.md`** (pelo menos 2-3 agentes) — formato dos agentes
