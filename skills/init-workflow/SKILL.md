@@ -105,7 +105,7 @@ Basic `.claude/settings.json` with default effort level.
 
 ## Template Source
 
-This skill reads from the `claude-code-workflow` template repository. Files are adapted using the detected project values before being written.
+This skill reads from the `openclaude-workflow` template repository. Files are adapted using the detected project values before being written.
 
 ## After Setup
 

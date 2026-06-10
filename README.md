@@ -60,7 +60,7 @@ spec-driver → product-owner → explorer → devs → test-writer → code-rev
 ## Project Structure
 
 ```
-claude-code-workflow/
+openclaude-workflow/
 ├── template/                          # → Copy into target project
 │   ├── CLAUDE.md                      # Pointer with placeholders
 │   ├── AGENTS.md                      # Orchestration workflow

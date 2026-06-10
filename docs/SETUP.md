@@ -23,7 +23,7 @@ opencode
 
 ```bash
 # 1. Create repo from template
-gh repo create my-project --template vinileonardo/claude-code-workflow
+gh repo create my-project --template vinileonardo/openclaude-workflow
 cd my-project
 
 # 2. Initialize git
@@ -42,7 +42,7 @@ Copy the template files into your project:
 
 ```bash
 # Clone the workflow repo
-git clone https://github.com/vinileonardo/claude-code-workflow.git /tmp/ccw
+git clone https://github.com/vinileonardo/openclaude-workflow.git /tmp/ocw
 cd your-project
 
 # Copy template files
