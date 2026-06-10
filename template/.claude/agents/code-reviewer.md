@@ -100,6 +100,36 @@ Reviewer found a problem?
         → PR ready for merge after security review
 ```
 
+## Output
+
+Write the review to `docs/review-report.md`:
+
+```markdown
+# Code Review: <feature>
+
+## Reviewed Files
+- <file>
+
+## Verdict
+**PASS** / **PASS WITH NOTES** / **BLOCKING**
+
+## Findings
+- <finding> — CRITICAL/IMPORTANT/SUGGESTION
+
+## Summary
+<overall assessment>
+```
+
+## GitHub PR Integration
+
+When reviewing a PR:
+
+- Add the verdict as a PR review comment
+- Use labels: `review-passed` or `changes-requested`
+- If BLOCKING, submit as "Request changes" on the PR
+- If PASS WITH NOTES, approve with inline comments
+- Reference `docs/review-report.md` in the PR
+
 ## Tone
 
 - Be constructive, not critical

@@ -160,3 +160,15 @@ Maps common project stacks to placeholder values used by the template system.
 | poetry.lock | Poetry | poetry install |
 | go.sum | Go modules | go mod tidy |
 | Cargo.lock | Cargo | cargo build |
+
+## Global Placeholders (GitHub Integration)
+
+These are detected or asked separately. Apply to all stacks.
+
+| Placeholder | How to Detect / Ask |
+|---|---|
+| `{{GITHUB_USERNAME}}` | Ask user or detect from `git config user.name` |
+| `{{CI_MAIN_BRANCH}}` | Detect from `git remote show origin \| grep HEAD`, or default to `main` |
+| `{{CI_STAGING_BRANCH}}` | Ask user, or default to `staging` |
+| `{{DOCKER_DEPLOY_CMD}}` | From Docker compose or ask user |
+| `{{USER_ROLE}}` | Default to "User" — placeholder for story templates |

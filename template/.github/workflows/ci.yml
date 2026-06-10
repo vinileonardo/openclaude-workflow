@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [{{CI_MAIN_BRANCH}}, {{CI_STAGING_BRANCH}}]
+  pull_request:
+    branches: [{{CI_MAIN_BRANCH}}]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint
+        run: {{BACKEND_LINT_CMD}}
+
+      - name: Typecheck
+        run: {{BACKEND_TYPECHECK_CMD}}
+
+      - name: Test
+        run: {{BACKEND_TEST_CMD}}
+
+      - name: Frontend Lint
+        run: {{FRONTEND_LINT_CMD}}
+
+      - name: Frontend Test
+        run: {{FRONTEND_TEST_CMD}}

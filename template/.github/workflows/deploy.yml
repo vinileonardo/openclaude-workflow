@@ -1,0 +1,21 @@
+name: Deploy
+
+on:
+  push:
+    branches: [{{CI_STAGING_BRANCH}}, {{CI_MAIN_BRANCH}}]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: {{BACKEND_BUILD_CMD}}
+
+      - name: Deploy to ${{ github.ref_name }}
+        run: {{DOCKER_DEPLOY_CMD}}
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}

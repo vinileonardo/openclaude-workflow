@@ -1,0 +1,25 @@
+name: Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+
+jobs:
+  size:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: pascalgn/size-label-action@v1
+        with:
+          sizes: >
+            {
+              "XS": 10,
+              "S": 50,
+              "M": 200,
+              "L": 500,
+              "XL": 1000
+            }
+
+  labeler:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v5

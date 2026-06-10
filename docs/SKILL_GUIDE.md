@@ -53,6 +53,37 @@ Best for: **starting a new project**, or adopting the workflow where no previous
 | `.claude/agents/*.md` | 10 individual agent definitions |
 | `.claude/settings.json` | OpenClaude configuration |
 | `memory/MEMORY.md` | Memory index template |
+| `.github/ISSUE_TEMPLATE/*.md` | Issue templates (if GitHub opt-in) |
+| `.github/workflows/*.yml` | CI/CD workflows (if GitHub opt-in) |
+
+---
+
+## GitHub Integration (Optional)
+
+During both greenfield and adoption setup, you're asked if you want GitHub integration.
+
+### What It Does
+
+- Generates `.github/ISSUE_TEMPLATE/` (epic, story, task, bug)
+- Generates `.github/workflows/` (CI, deploy, review automation)
+- Creates labels: `epic`, `story`, `task`, `spike`, `bug`
+- Offers branch protection configuration
+
+### When to Opt In
+
+- You use GitHub Issues and Projects for task management
+- You want CI/CD via GitHub Actions
+- You want standardized issue templates for the agent workflow
+
+### When to Opt Out
+
+- You use a different Git provider (GitLab, Bitbucket)
+- You have your own issue/CI setup already
+- You just want the agent workflow without GitHub extras
+
+### More Details
+
+See `docs/GITHUB_INTEGRATION.md` for the complete guide.
 
 ---
 

@@ -59,6 +59,19 @@ I generate adapted files into `.claude/workflow-setup/`:
 
 All files are adapted to your detected stack with correct paths and commands.
 
+### Phase 2.5: GitHub Setup (Optional)
+
+I ask if the user wants GitHub integration (token, labels, issue templates, Actions):
+
+**If yes:**
+- Detect/create `{{GITHUB_USERNAME}}`, `{{CI_MAIN_BRANCH}}`, `{{CI_STAGING_BRANCH}}`
+- Generate `.github/ISSUE_TEMPLATE/*.md` (epic, story, task, bug)
+- Generate `.github/workflows/ci.yml`, `deploy.yml`, `review.yml`
+- Optionally create labels via `gh label create` (if GitHub CLI is available)
+- Offer to set up branch protection rules
+
+**If no:** Skip this phase entirely. No GitHub files are generated.
+
 ### Phase 3: Confirmation
 
 I show you:
@@ -212,6 +225,15 @@ I write files using intelligent merge rules:
 - **Memories**: Add bootstrapped memories alongside existing ones. Never remove existing memories.
 - **Adjacent configs**: Import relevant rules from Cursor/Copilot configs into the workflow, leaving original files untouched.
 
+### Phase A4.5: GitHub Setup (Optional, same as Greenfield Phase 2.5)
+
+After the merge, I offer to set up GitHub integration:
+- Generate `.github/ISSUE_TEMPLATE/*.md` and `.github/workflows/*.yml`
+- Create labels via `gh label create` (if CLI available)
+- Offer branch protection configuration
+
+If declined, no GitHub files are touched.
+
 ### Phase A5: Adoption Report
 
 After merge, I present:
@@ -316,6 +338,16 @@ In `--adopt` mode, custom agents are preserved and template agents are added.
 | **security-reviewer** | deepseek-v4-pro | Security audit, OWASP Top 10, compliance |
 | **documentation-writer** | deepseek-v4-flash | Docs sync, CHANGELOG, ADRs |
 | **devops** | qwen3.7-plus | Docker, CI/CD, migrations, deploy |
+
+### GitHub Setup (Optional)
+
+If you opt in during setup, the skill also generates:
+
+- `.github/ISSUE_TEMPLATE/epic.md`, `story.md`, `task.md`, `bug.md`
+- `.github/workflows/ci.yml`, `deploy.yml`, `review.yml`
+- Labels: `epic`, `story`, `task`, `spike`, `bug` (via `gh label create`)
+
+These are adapted to your stack with correct commands and branch names.
 
 ### Settings
 Basic `.claude/settings.json` with default effort level. Never overwritten in `--adopt` mode if already configured.
