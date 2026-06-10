@@ -56,6 +56,32 @@ Best for: **starting a new project**, or adopting the workflow where no previous
 
 ---
 
+## Update Mode (`/init-workflow --update`)
+
+Best for: **projects already using this workflow** that need to pick up new template files without losing customizations.
+
+### What It Does
+
+- Runs the same discovery as greenfield mode
+- Creates missing files only (CLAUDE.md, AGENTS.md, agents, settings, memories)
+- **Never overwrites** existing files — only adds what's missing
+
+### When to Use
+
+- After pulling a newer version of the `openclaude-workflow` template
+- To add newly introduced agents or docs to an existing setup
+- After renaming the project or changing the stack
+
+### Comparison
+
+| Flag | When | What Gets Written |
+|---|---|---|
+| *(none)* | First setup | Everything from template |
+| `--update` | Already set up | Only missing files |
+| `--adopt` | Existing project | Merge + preserve + bootstrap |
+
+---
+
 ## Adoption Mode (`/init-workflow --adopt`)
 
 Best for: **existing projects** with code written, conventions established, and possibly a partial or different workflow setup already in place.
@@ -169,7 +195,7 @@ Best for: **any project** — removes orphaned and stale files left behind as th
 |---|---|---|
 | *(no flag)* | Greenfield | Full discovery + generation + confirmation |
 | `--check` | Both | Discover only — no files written |
-| `--update` | Greenfield | Regenerate from existing template |
+| `--update` | Update | Regenerate missing files only (preserves existing) |
 | `--adopt` | Adoption | Full inventory + bootstrap + diff + merge |
 | `--adopt --dry-run` | Adoption | Preview only — no files written |
 | `--adopt --check` | Adoption | Skip to inventory only |

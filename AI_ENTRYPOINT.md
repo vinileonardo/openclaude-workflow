@@ -145,6 +145,8 @@ Leia, nesta ordem:
 3. **`docs/SKILL_GUIDE.md`** — referência completa da skill
 4. **`skills/init-workflow/SKILL.md`** — implementação detalhada da skill
 5. **`template/AGENTS.md`** — orquestração dos 10 agentes
-6. **`template/docs/runbooks/`** — runbooks de uso diário (adicionar feature, corrigir bug, revisar segurança)
-7. **`docs/CUSTOMIZATION.md`** — como adaptar para qualquer stack
-8. **`template/.claude/agents/*.md`** (pelo menos 2-3 agentes) — formato dos agentes
+6. **`template/docs/agent-protocol.md`** — formato de saída de cada agente e fluxo de artefatos
+7. **`template/docs/runbooks/`** — runbooks de uso diário (adicionar feature, corrigir bug, revisar segurança)
+8. **`template/docs/runbooks/first-task.md`** — tarefa de validação do workflow (hello world)
+9. **`docs/CUSTOMIZATION.md`** — como adaptar para qualquer stack
+10. **`template/.claude/agents/*.md`** (pelo menos 2-3 agentes) — formato dos agentes

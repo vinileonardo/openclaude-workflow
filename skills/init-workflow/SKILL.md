@@ -77,7 +77,45 @@ After setup, I explain:
 
 ---
 
-## Mode: `--adopt` (Existing Projects)
+## Mode: `--update` (Regenerate)
+
+Best for: **projects already using this workflow** that need to regenerate files from the latest template without losing customizations.
+
+### When to Use
+
+- After updating the `openclaude-workflow` template (new agents, improved docs)
+- When you want to add missing template files to an existing setup
+- After renaming the project or changing the stack summary
+
+### What It Does
+
+`--update` re-reads the current project (same discovery as greenfield) and regenerates **only missing or template-default files**:
+
+| File | Behavior |
+|---|---|
+| `CLAUDE.md` | Only if missing |
+| `AGENTS.md` | Only if missing |
+| `.claude/agents/*.md` | **Never overwrites** — only adds agents that don't exist yet |
+| `.claude/settings.json` | Only if missing |
+| `memory/MEMORY.md` | Only if missing |
+| `template/docs/agent-protocol.md` | Only if missing |
+| `template/docs/runbooks/*.md` | Only if missing |
+
+### What It Does NOT Do
+
+- Does NOT overwrite customized agents, rules, or commands
+- Does NOT modify existing memories
+- Does NOT run merge or diff (use `--adopt` for that)
+
+### Comparison
+
+| Flag | When | What Gets Written |
+|---|---|---|
+| *(none)* | First setup | Everything from template |
+| `--update` | Already set up, template changed | Only missing files |
+| `--adopt` | Existing project with custom setup | Merge + preserve + bootstrap |
+
+---
 
 For projects that already have code, conventions, and possibly an existing workflow setup. This mode preserves what you have, merges what's missing, and bootstraps memory from your existing codebase.
 
