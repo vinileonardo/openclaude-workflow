@@ -1,7 +1,7 @@
 ---
 name: explorer
 description: Codebase researcher and explorer. Use for understanding architecture, finding implementations, mapping dependencies, analyzing patterns, and answering technical questions. Read-only.
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Bash, Write, Edit
 model: deepseek-v4-flash
 permissionMode: plan
 memory: project

@@ -192,6 +192,7 @@ Vulnerability found?
 
 ### Post-merge
 - [ ] PR merged to main/default branch
+- [ ] Move issues on GitHub Projects board to "Done"
 - [ ] Each issue receives detailed comment
 - [ ] Non-blocking feedback → tech-debt issue created
 - [ ] Bugs found → bug issue created

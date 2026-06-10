@@ -1,7 +1,7 @@
 ---
 name: spec-driver
 description: Specialist in Spec Driven Development (SDD). Refines prompts and ideas into precise, traceable, testable specifications before any implementation.
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Bash, Write, Edit
 model: deepseek-v4-pro
 permissionMode: plan
 memory: project

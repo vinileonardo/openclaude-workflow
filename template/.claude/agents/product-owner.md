@@ -1,7 +1,7 @@
 ---
 name: product-owner
 description: Analyzes requirements, creates epics, user stories, and GitHub issues. Use for feature planning, breaking down requirements, backlog management, and product documentation.
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Bash, Write, Edit
 model: deepseek-v4-pro
 permissionMode: plan
 memory: project

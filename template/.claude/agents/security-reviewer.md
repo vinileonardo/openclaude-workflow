@@ -1,7 +1,7 @@
 ---
 name: security-reviewer
 description: Security software specialist. Reviews code for vulnerabilities, OWASP Top 10, token handling, session management, compliance, and data privacy. Runs after code-review as the final gate before merge.
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Bash, Write, Edit
 model: deepseek-v4-pro
 permissionMode: plan
 memory: project

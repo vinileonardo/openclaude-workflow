@@ -1,7 +1,7 @@
 ---
 name: documentation-writer
 description: Technical documentation specialist. Keeps docs in sync with code, updates README, CHANGELOG, API docs, and feature documentation. Runs in parallel with code-reviewer and security-reviewer to avoid blocking the flow.
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Bash, Write, Edit
 model: deepseek-v4-flash
 permissionMode: plan
 memory: project
